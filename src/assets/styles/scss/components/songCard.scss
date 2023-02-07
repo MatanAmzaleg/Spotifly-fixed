@@ -1,0 +1,50 @@
+.song-card-sec {
+  width: 220px;
+  height: 300px;
+  background-color: rgba(116, 116, 116, 0.059);
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover{
+    background-color: rgba(116, 116, 116, 0.127);
+  }
+
+  .inside-card{
+    height: 65%;
+    img{
+        height: 110%;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 1/1;
+
+        &:hover{
+          filter: contrast(0.7);
+        }
+    }
+    .play-cmp{
+        position: absolute;
+    }
+
+    &:hover{
+      .play{
+        display: block;
+      }
+    }
+  }
+
+  .desc{
+    height: 20%;
+    width: 100%;
+    .song-title{
+        text-align: center;
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+}

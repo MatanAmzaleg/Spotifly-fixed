@@ -1,0 +1,27 @@
+.flex{
+    display: flex;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.grid{
+    display: grid;
+}
+
+.debug{
+    outline: 1px solid red;
+}
+
+.relative{
+    position: relative;
+}
