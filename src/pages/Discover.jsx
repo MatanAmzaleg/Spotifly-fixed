@@ -3,23 +3,23 @@ import { Loader } from "../components/Loader";
 import { SongCard } from "../components/SongCard";
 import { genres } from "../assets/constants";
 import { useSelector, useDispatch } from "react-redux";
-import { useGetTopChartsQuery } from "../services/youtubeApi.service";
+import { useEffect, useState } from "react";
+import { loadSongs } from "../redux/actions/songs.actions";
 
 
 
 
 export const Discover = () => {
 
-  const dispath = useDispatch();
-  const { activeSong, isPlaying} = useSelector((state) => state.player);
-  const { data, isFetching, error } = useGetTopChartsQuery();
+  const dispacth = useDispatch();
+  const { activeSong, isPlaying, currentSongs} = useSelector((state) => state.songModule);
 
-  console.log(data?.items);
   console.log(genres);
 
-  if (isFetching) return <Loader title="Loading songs..."></Loader>;
+  useEffect(() => {
+    dispacth(loadSongs());
+  }, []);
 
-  if (error) return <Error></Error>;
 
   return (
     <section className="discover-sec flex align-center column">
@@ -35,8 +35,10 @@ export const Discover = () => {
       </select>
 
       <section className="songs-sec">
-        {data?.items.slice(0, 6).map((song, i) => {
-          return <SongCard key={song.id} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} data={data}></SongCard>;
+        {currentSongs.slice(0, 25).map((song, i) => {
+          if(song.images && song.hub.actions){
+            return <SongCard key={song.key} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} data={currentSongs}></SongCard>;
+          }else return null
         })}
       </section>
     </section>

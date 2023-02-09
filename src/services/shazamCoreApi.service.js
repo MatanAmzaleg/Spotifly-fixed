@@ -1,20 +1,19 @@
-import axios from "axios";
+
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
 
 
-export const youTubeCoreApi = createApi({
-  reducerPath: 'youTubeCoreApi',
+export const shazamCoreApi = createApi({
+  reducerPath: 'shazamCoreApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://youtube-search-results.p.rapidapi.com',
+    baseUrl: 'https://shazam-core.p.rapidapi.com/v1',
     prepareHeaders: (headers) => {
       headers.set('X-RapidAPI-Key', '124c61629emsha6267252681b2fbp19e71cjsnd6bf29d6dd59')
-
       return headers
     }
   }),
   endpoints: (builder) => ({
     getTopCharts: builder.query({
-      query: () => '/youtube-search/?q=justin%20bieber',
+      query: () => '/charts/world',
     })
   })
 })
@@ -22,6 +21,6 @@ export const youTubeCoreApi = createApi({
 export const {
   useGetTopChartsQuery,
 
-} = youTubeCoreApi
+} = shazamCoreApi
 
 

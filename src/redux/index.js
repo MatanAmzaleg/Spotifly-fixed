@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { youTubeCoreApi } from '../services/youtubeApi.service';
-import playerReducer from './features/playerSlice';
+import { applyMiddleware, combineReducers, compose, legacy_createStore as createStore } from 'redux'
+import thunk from 'redux-thunk'
+import { songReducer } from './reducers/song.reducer'
 
-export const store = configureStore({
-  reducer: {
-    [youTubeCoreApi.reducerPath] : youTubeCoreApi.reducer,
-    player: playerReducer,
-  },
-  middleware : (getDefaultMiddleware) => getDefaultMiddleware().concat(youTubeCoreApi.middleware),
-});
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const rootReducer = combineReducers({
+  songModule: songReducer,
+})
+
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))

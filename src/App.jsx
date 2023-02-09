@@ -14,7 +14,8 @@ import {SongDetails} from "./pages/SongDetails";
 import {TopCharts} from "./pages/TopCharts";
 
 const App = () => {
-  const { activeSong } = useSelector((state) => state.player);
+
+  const { activeSong } = useSelector(state => state.songModule);
 
   return (
     <div className="relative flex">
