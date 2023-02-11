@@ -23,3 +23,44 @@ export function setActiveSong(payload){
         }
     }
 }
+export function playPause(payload){
+    return async(dispatch) => {
+        try{
+            dispatch({type:'PLAY_PAUSE', payload})
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+}
+export function nextSong(payload){
+    return async(dispatch) => {
+        try{
+            dispatch({type:'NEXT_SONG', payload})
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+}
+export function prevSong(payload){
+    return async(dispatch) => {
+        try{
+            dispatch({type:'PREV_SONG', payload})
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+}
+export function selectGenreListId(payload){
+    return async(dispatch) => {
+        try{
+            console.log(payload)
+            dispatch({type:'SELECT_GENRE_LIST_ID', payload})
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+}

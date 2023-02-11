@@ -5,6 +5,8 @@ import { genres } from "../assets/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadSongs } from "../redux/actions/songs.actions";
+import {RiCloseLine} from 'react-icons/ri';
+import {HiOutlineMenu} from 'react-icons/hi'
 
 
 

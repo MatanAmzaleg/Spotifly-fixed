@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { PlayPause } from "./PlayPause"
-import { setActiveSong } from "../redux/actions/songs.actions"
-import {playPause,} from "../redux/features/playerSlice"
+import { setActiveSong, playPause } from "../redux/actions/songs.actions"
 
 export const SongCard = ({song, isPlaying, activeSong, i, data}) => {
   
@@ -25,7 +24,7 @@ export const SongCard = ({song, isPlaying, activeSong, i, data}) => {
       </div>
       <div className="desc flex column align-center justify-center">
     <h1 className="song-title">
-      <Link to={`/songs/${song.id}`}>
+      <Link to={`/songs/${song.key}`}>
       {song.title}
       </Link>
       </h1>
