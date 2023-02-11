@@ -75,6 +75,7 @@ export const MusicPlayer = () => {
           setSeekTime={setSeekTime}
           appTime={appTime}
         />
+            <h1 className='copyrights'>&#169;CopyRights Matan Amzaleg</h1>
         <Player
           activeSong={activeSong}
           volume={volume}

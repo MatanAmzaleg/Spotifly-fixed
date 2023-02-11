@@ -1,0 +1,80 @@
+.top-play-sec{
+    width: 100%;
+
+    .top-charts{
+        .main-title{
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+    }
+
+    .top-artists{
+        margin-top: 30px;
+
+        .main-title{
+            font-size: 1.4rem;
+            color: white;
+        }
+        .swiper-slide{
+            margin-top: 10px;
+            width: 25%;
+            max-width: 130px;
+            img{
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+
+.top-chart-card{
+    margin-bottom: 10px;
+    padding-block: 10px;
+    padding-inline-start: 10px;
+    border-radius: 10px;
+    >*{
+        padding-inline-end: 10px;
+    }
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.124);
+    }
+    .number{
+        color: white;
+        font-size: 1.3rem;
+        margin-inline-end: 7px;
+    }
+    .song-details{
+        width: 100%;
+        >*{
+            margin-inline-end: 5px;
+        }
+        img{
+            border-radius: 10px;
+            width: 80px;
+        }
+
+        .song-title{
+            font-weight: bolder;
+            font-size: 18px;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            
+        }
+        .song-subtitle{
+            font-size: 11px;
+            color: white;
+            width: fit-content;
+        }
+    }
+}
+
+
+@media(min-width:1280px){
+    .top-charts-root{
+        width: 25%;
+    }
+}

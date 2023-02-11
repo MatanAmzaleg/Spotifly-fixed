@@ -7,6 +7,7 @@
 @import "./components/songCard.scss";
 @import "./components/pausePlay.scss";
 @import "./components/sidebar.scss";
+@import "./components/topPlay.scss";
 
 
 //helpers
@@ -18,4 +19,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.copyrights{
+    position: relative;
+    top: 10px;
+    color: white;
+    font-size: 11px;
 }
