@@ -19,7 +19,7 @@ export const TopPlay = () => {
 
   useEffect(() => {
     divRef.current.scrollIntoView({ brhavior: "smooth" });
-  });
+  },[]);
 
   const topPlays = currentSongs?.slice(0, 5);
   console.log(topPlays);

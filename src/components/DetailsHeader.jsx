@@ -11,6 +11,7 @@ export const DetailsHeader = ({artistId, songData}) => {
 
   useEffect(() => {
     const fetchSongData = async () => {
+      console.log(songData);
       const song = songData.find(song => song.key === songid);
       setCurrentSong(song);
     };
