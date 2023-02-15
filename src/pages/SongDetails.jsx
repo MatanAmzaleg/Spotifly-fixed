@@ -20,25 +20,35 @@ export const SongDetails = () => {
   const { activeSong, isPlaying, currentSongs, currenLyrics, relatedSongs } =
     useSelector((state) => state.songModule);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(loadSongs());
-      const currentSong = currentSongs.find((song) => song.key === songid);
-      console.log(currentSong);
-      const songArtist = currentSong.artists[0].alias;
-      const songName = currentSong.title;
-      dispatch(fetchRelatedSongs(songArtist));
-      dispatch(getLyrics(songName, songArtist));
-    };
-    fetchData();
-  }, [songid]);
+    useEffect(() => {
+      const fetchData = async () => {
+        await dispatch(loadSongs());
+        let currentSong = currentSongs.find((song) => song.key === songid);
+        if(!currentSong){
+          console.log(relatedSongs, currentSongs);
+          currentSong = relatedSongs.find((song) => song.key === songid);
+          console.log("currentSong", currentSong);
+        }
+        if (currentSong) {
+          console.log(currentSong);
+          let songArtist
+          if(currentSong.artists[0].alias) songArtist = currentSong.artists[0].alias;
+          else songArtist = currentSong.subtitle
+          const songName = currentSong.title;
+          console.log("songArtist", songArtist, "songName", songName);
+          dispatch(fetchRelatedSongs(songArtist));
+          dispatch(getLyrics(songName, songArtist));
+        }
+      };
+      fetchData();
+    }, [songid]);
 
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
 
   const handlePlayClick = (song, i) => {
-    dispatch(setActiveSong({ song, data, i }));
+    dispatch(setActiveSong({ song, data:currentSongs.concat(relatedSongs), i }));
     dispatch(playPause(true));
   };
 
@@ -56,9 +66,9 @@ export const SongDetails = () => {
     return lyrics.trim();
   }
 
-  return (
+   return (
     <section className="song-details-sec flex column">
-      <DetailsHeader artistId="" songData={currentSongs}></DetailsHeader>
+      <DetailsHeader artistId="" songData={currentSongs.concat(relatedSongs)}></DetailsHeader>
       <div className="lyrics-sec">
         <h1 className="lyrics-title">Lyrics:</h1>
         <pre className="lyrics">

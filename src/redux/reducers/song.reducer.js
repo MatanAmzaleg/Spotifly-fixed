@@ -7,7 +7,7 @@ const initialState = {
   genreListId: "",
   currenLyrics:"",
   currentSong:{},
-  relatedSongs: {},
+  relatedSongs: [],
 };
 
 export function songReducer(state = initialState, action) {

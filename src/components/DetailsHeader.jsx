@@ -9,9 +9,14 @@ export const DetailsHeader = ({artistId, songData}) => {
   const [currentSong, setCurrentSong] = useState()
   const { songid } = useParams();
 
-  useEffect(async ()=> {
-    setCurrentSong(songData.find(song => song.key === songid))
-  },[songid])
+  useEffect(() => {
+    const fetchSongData = async () => {
+      const song = songData.find(song => song.key === songid);
+      setCurrentSong(song);
+    };
+  
+    fetchSongData();
+  }, [songid]);
 
   console.log(currentSong);
   return(
