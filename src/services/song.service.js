@@ -2,6 +2,8 @@ import { httpService } from "./http.service"
 
 export const songService = {
     query,
+    getLyrics,
+    getRelatedSongs
     // save,
     // remove,
     // getById,
@@ -19,6 +21,23 @@ async function query(collectionName) {
     }
    
     return Promise.resolve([...robotsToReturn])
+}
+
+async function getLyrics (songName, songArtist){
+    try{
+        return httpService.get(BASE_URL + 'lyrics', {'songName':songName, 'songArtist':songArtist})
+    }catch(err){
+        console.log(err, "failed to fetch lyrics");
+    }
+}
+
+async function getRelatedSongs (artist){
+    try{
+        console.log("ok");
+        return httpService.get(BASE_URL + 'related', {'query':artist})
+    }catch(err){
+        console.log(err, "failed to fetch RekatedSongs");
+    }
 }
 
 // function tryRobot(id) {

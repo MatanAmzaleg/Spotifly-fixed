@@ -5,17 +5,37 @@ const initialState = {
   isPlaying: false,
   activeSong: {},
   genreListId: "",
+  currenLyrics:"",
+  currentSong:{},
+  relatedSongs: {},
 };
 
 export function songReducer(state = initialState, action) {
   switch (action.type) {
+    case "SET_CURRENT_SONG":
+      return {
+        ...state,
+        currentSong: action.currSong,
+      };
+    case "GET_RELATED_SONGS":
+      return {
+        ...state,
+        relatedSongs: action.relatedSongs,
+      };
     case "FETCH_SONGS":
       return {
         ...state,
         currentSongs: action.songs,
       };
+    case "SET_LYRICS":
+      console.log(action);
+      return {
+        ...state,
+        currenLyrics: action.lyrics,
+      };
     case "SET_ACTIVE_SONG":
       if (action.payload?.data?.tracks?.hits) {
+        console.log(action);
         return {
           ...state,
           currentSongs: action.payload.data.tracks.hits,

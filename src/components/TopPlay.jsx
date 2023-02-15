@@ -28,7 +28,8 @@ export const TopPlay = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = () => {
+  const handlePlayClick = ({ song, i }) => {
+    const data = currentSongs
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
@@ -41,7 +42,15 @@ export const TopPlay = () => {
           <Link to={"/top-charts"}>See more...</Link>
         </div>
         {topPlays?.map((song, i) => (
-          <TopChartCard key={song.key} song={song} i={i}></TopChartCard>
+          <TopChartCard
+            key={song.key}
+            song={song}
+            i={i}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            handlePauseClick={handlePauseClick}
+            handlePlayClick={() => handlePlayClick({ song, i })}
+          ></TopChartCard>
         ))}
       </div>
       <div className="top-artists">
@@ -71,8 +80,15 @@ export const TopPlay = () => {
   );
 };
 
-const TopChartCard = ({ song, i }) => (
-  <section className="top-chart-card flex align-center">
+const TopChartCard = ({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  handlePauseClick,
+  handlePlayClick,
+}) => (
+  <section className="top-chart-card flex align-center space-between">
     <h3 className="number">{i + 1}.</h3>
     <div className="song-details flex align-center">
       <img className="song-img" src={song?.images?.coverart} alt="" />
@@ -80,10 +96,21 @@ const TopChartCard = ({ song, i }) => (
         <Link to={`/songs/${song.key}`}>
           <h1 className="song-title">{song?.title}</h1>
         </Link>
-        <Link className="song-subtitle" to={`/artists/${song?.artists[0].adamid}`}>
+        <Link
+          className="song-subtitle"
+          to={`/artists/${song?.artists[0].adamid}`}
+        >
           <p className="song-subtitle">{song.subtitle}</p>
         </Link>
       </div>
     </div>
+      <PlayPause
+        className="play-pause"
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+        song={song}
+        handlePause={handlePauseClick}
+        handlePlay={handlePlayClick}
+      ></PlayPause>
   </section>
 );
