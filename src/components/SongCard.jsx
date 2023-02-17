@@ -29,7 +29,7 @@ export const SongCard = ({song, isPlaying, activeSong, i, data}) => {
       </Link>
       </h1>
       <p className="song-subtitle">
-        <Link to={song.artists ? `/artists/${song?.artists[0]?.adamid}` : '/top-artist'}>
+        <Link to={song.artists ? `/artists/${song?.artists[0]?.adamid}/${song?.subtitle}` : '/top-artist'}>
         {song.subtitle}
         </Link>
       </p>

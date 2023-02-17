@@ -15,7 +15,7 @@ const BASE_URL = "song/"
 
 async function query(collectionName) {
     try{
-        return httpService.get(BASE_URL, {'collectionName': collectionName})
+        return httpService.get(BASE_URL, { 'collectionName': collectionName})
     }catch(err){
         console.log( "failed to fetch songs", err)
     }

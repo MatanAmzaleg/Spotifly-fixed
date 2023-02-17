@@ -1,47 +1,36 @@
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DetailsHeader } from "../components/DetailsHeader";
 import { Error } from "../components/Error";
 import { Loader } from "../components/Loader";
 import { RelatedSongs } from "../components/RelatedSongs";
 import {
-  setActiveSong,
-  playPause,
   getLyrics,
   fetchRelatedSongs,
-  loadSongs,
+  setActiveSong,
+  playPause
 } from "../redux/actions/songs.actions";
 import { useEffect, useState } from "react";
 
 export const ArtistDetails = () => {
-  const dispatch = useDispatch();
 
-  const { songid } = useParams();
-  const { activeSong, isPlaying, currentSongs, currenLyrics, relatedSongs } =
+  const dispatch = useDispatch()
+  const { name, id } = useParams();
+  const { activeSong, isPlaying, currentSongs, currenLyrics, relatedSongs, currentSong } =
     useSelector((state) => state.songModule);
 
+    const [artistName, setArtistName] = useState(name)
+
+    console.log("name is:" , name);
+
     useEffect(() => {
-      const fetchData = async () => {
-        await dispatch(loadSongs());
-        let currentSong = currentSongs.find((song) => song.key === songid);
-        if(!currentSong){
-          console.log(relatedSongs, currentSongs);
-          currentSong = relatedSongs.find((song) => song.key === songid);
-          console.log("currentSong", currentSong);
-        }
-        if (currentSong) {
-          console.log(currentSong);
-          let songArtist
-          if(currentSong.artists[0].alias) songArtist = currentSong.artists[0].alias;
-          else songArtist = currentSong.subtitle
-          const songName = currentSong.title;
-          console.log("songArtist", songArtist, "songName", songName);
-          dispatch(fetchRelatedSongs(songArtist));
-          dispatch(getLyrics(songName, songArtist));
-        }
-      };
-      fetchData();
-    }, [songid]);
+      if (name.indexOf(",") !== -1) {
+        setArtistName(name.substring(0, name.indexOf(",")));
+      } else {
+        setArtistName(name);
+      }
+      dispatch(fetchRelatedSongs(name))
+    }, [name]);
 
   const handlePauseClick = () => {
     dispatch(playPause(false));
@@ -52,29 +41,9 @@ export const ArtistDetails = () => {
     dispatch(playPause(true));
   };
 
-  function processLyrics() {
-    // Remove the specified text
-    let lyrics = currenLyrics.replace(
-      "******* This Lyrics is NOT for Commercial use *******",
-      ""
-    );
-    lyrics = lyrics.replace("(1409623148203)", "");
-
-    // Add a line break after each comma
-    lyrics = lyrics.replace(/,/g, ", \n");
-
-    return lyrics.trim();
-  }
-
    return (
     <section className="song-details-sec flex column">
-      <DetailsHeader artistId="" songData={currentSongs.concat(relatedSongs)}></DetailsHeader>
-      <div className="lyrics-sec">
-        <h1 className="lyrics-title">Lyrics:</h1>
-        <pre className="lyrics">
-          {processLyrics() ? processLyrics() : "No Lyrics found!"}{" "}
-        </pre>
-      </div>
+      <DetailsHeader artistId={artistName} currentSong={currentSong} songData={currentSongs.concat(relatedSongs)}></DetailsHeader>
       <RelatedSongs
         relatedSongs={relatedSongs}
         isPlaying={isPlaying}

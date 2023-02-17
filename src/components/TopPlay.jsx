@@ -13,7 +13,7 @@ import "swiper/css/free-mode";
 export const TopPlay = () => {
   const dispatch = useDispatch();
   const divRef = useRef(null);
-  const { activeSong, isPlaying, currentSongs } = useSelector(
+  const { activeSong, isPlaying, currentSongs, currentSong } = useSelector(
     (state) => state.songModule
   );
 
@@ -56,7 +56,7 @@ export const TopPlay = () => {
       <div className="top-artists">
         <div className="title flex align-center space-between">
           <h1 className="main-title">Top Artists</h1>
-          <Link to={"/top-charts"}>See more...</Link>
+          <Link to={"/top-artists"}>See more...</Link>
         </div>
         <Swiper
           slidesPerView="auto"
@@ -69,7 +69,7 @@ export const TopPlay = () => {
         >
           {topPlays?.map((song, i) => (
             <SwiperSlide key={song?.key} className="swiper-slide">
-              <Link to={`/artists/${song?.artists[0].adamid}`}>
+              <Link to={`/artists/${song?.artists[0].adamid}/${song?.subtitle}`}>
                 <img src={song?.images.background} alt="name" />
               </Link>
             </SwiperSlide>
@@ -98,7 +98,7 @@ const TopChartCard = ({
         </Link>
         <Link
           className="song-subtitle"
-          to={`/artists/${song?.artists[0].adamid}`}
+          to={`/artists/${song?.artists[0].adamid}/${song?.subtitle}`}
         >
           <p className="song-subtitle">{song.subtitle}</p>
         </Link>

@@ -22,11 +22,15 @@ export const Discover = () => {
     dispacth(loadSongs());
   }, []);
 
+  const handleGengreChange = (e)=>{
+    dispacth(loadSongs(e.target.value));
+  }
+
 
   return (
     <section className="discover-sec flex align-center column">
       <h2 className="main-title">Discover</h2>
-      <select onChange={() => {}} className="genre-select" name="genres" id="">
+      <select onChange={() => {handleGengreChange(event)}} className="genre-select" name="genres" id="">
         {genres.map((genre) => {
           return (
             <option key={genre.value} value={genre.value}>

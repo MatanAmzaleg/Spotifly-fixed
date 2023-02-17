@@ -1,16 +1,16 @@
 import { HiOutlineHashtag, HiOutlineHome, HiOutlinePhotograph, HiOutlineUserGroup } from 'react-icons/hi';
 
 export const genres = [
-  { title: 'Pop', value: 'POP_REACKS' },
-  { title: 'Hip-Hop', value: 'HIP_HOP_RAP_REACKS' },
-  { title: 'Dance', value: 'DANCE_REACKS' },
-  { title: 'Electronic', value: 'ELECTRONIC_REACKS' },
-  { title: 'Alternative', value: 'ALTERNATIVE_REACKS' },
-  { title: 'Rock', value: 'ROCK_REACKS' },
-  { title: 'Latin', value: 'LATIN_REACKS' },
-  { title: 'Worldwide', value: 'WORLDWIDE_REACKS' },
-  { title: 'Reggae', value: 'REGGAE_DANCE_HALL_REACKS' },
-  { title: 'House', value: 'HOUSE_REACKS' },
+  { title: 'Pop', value: 'POP' },
+  { title: 'Hip-Hop', value: 'HIP_HOP_RAP' },
+  { title: 'Dance', value: 'DANCE' },
+  { title: 'Electronic', value: 'ELECTRONIC' },
+  { title: 'Alternative', value: 'ALTERNATIVE' },
+  { title: 'Rock', value: 'ROCK' },
+  { title: 'Latin', value: 'LATIN' },
+  { title: 'Worldwide', value: 'WORLDWIDE' },
+  { title: 'Reggae', value: 'REGGAE_DANCE_HALL' },
+  { title: 'House', value: 'HOUSE' },
 ];
 
 export const links = [
