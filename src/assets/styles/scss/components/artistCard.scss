@@ -1,0 +1,48 @@
+.artist-card-sec {
+    width: 220px;
+    height: 270px;
+    background-color: rgba(255, 255, 255, 0.059);
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+  
+    transition: background-color 0.3s;
+  
+    &:hover{
+      background-color: rgba(255, 255, 255, 0.127);
+    }
+  
+    .inside-card{
+      height: 75%;
+      img{
+          height: 110%;
+          object-fit: cover;
+          border-radius: 8px;
+          aspect-ratio: 1/1;
+          transition: filter 0.3s;
+  
+          &:hover{
+            filter: contrast(0.7);
+          }
+      }
+      .play-cmp{
+          position: absolute;
+      }
+    }
+  
+    .desc{
+      width: 100%;
+      .artist-title{
+        font-size: 18px;
+        text-align: center;
+          width: 200px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+  }
+  }
+  
