@@ -9,7 +9,7 @@ export const AroundYou = () => {
 
   useEffect(() => {
     dispatch(loadSongs("AROUND_YOU"));
-  }, []);
+  }, [])
 
   return (
     <section className="around-you-sec flex align-center column">
