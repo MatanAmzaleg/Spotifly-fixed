@@ -14,8 +14,9 @@
     flex-direction: column;
 }
 
-.grid{
+.grid-center{
     display: grid;
+    place-items: center;
 }
 
 .debug{

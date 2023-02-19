@@ -23,6 +23,7 @@ export const Discover = () => {
   }, []);
 
   const handleGengreChange = (e)=>{
+    console.log('ok');
     dispacth(loadSongs(e.target.value));
   }
 
@@ -41,7 +42,7 @@ export const Discover = () => {
       </select>
 
       <section className="songs-sec">
-        {currentSongs.slice(0, 25).map((song, i) => {
+        {currentSongs.map((song, i) => {
           if(song.images && song.hub.actions){
             return <SongCard key={song.key} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} data={currentSongs}></SongCard>;
           }else return null

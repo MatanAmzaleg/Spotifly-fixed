@@ -36,11 +36,11 @@ export function getLyrics(songName, songArtist){
         }
     }
 }
-export function loadSongs(collectionName = 'DISCOVER'){
+export function loadSongs(collectionName = 'DISCOVER', searchTerm){
     return async(dispatch) => {
         try{
-            console.log(collectionName);
-            const songs = await songService.query(collectionName)
+            console.log(collectionName, searchTerm);
+            const songs = await songService.query(collectionName, searchTerm)
             console.log(songs)
             dispatch({type:'FETCH_SONGS', songs})
         }

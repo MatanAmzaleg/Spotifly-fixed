@@ -13,9 +13,9 @@ export const songService = {
 
 const BASE_URL = "song/"
 
-async function query(collectionName) {
+async function query(collectionName, searchTerm = '') {
     try{
-        return httpService.get(BASE_URL, { 'collectionName': collectionName})
+        return httpService.get(BASE_URL, { 'collectionName': collectionName, 'searchTerm':searchTerm.toUpperCase()})
     }catch(err){
         console.log( "failed to fetch songs", err)
     }

@@ -34,6 +34,7 @@ export const TopPlay = () => {
     dispatch(playPause(true));
   };
 
+  console.log(topPlays);
   return (
     <section className="top-play-sec flex column" ref={divRef}>
       <div className="top-charts">
@@ -69,7 +70,7 @@ export const TopPlay = () => {
         >
           {topPlays?.map((song, i) => (
             <SwiperSlide key={song?.key} className="swiper-slide">
-              <Link to={`/artists/${song?.artists[0].adamid}/${song?.subtitle}`}>
+              <Link to={`/artists/${song?.artists[0]?.adamid}/${song?.subtitle}`}>
                 <img src={song?.images.background} alt="name" />
               </Link>
             </SwiperSlide>
