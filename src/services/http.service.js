@@ -11,6 +11,7 @@ const axios = Axios.create({
     withCredentials: true
 })
 
+
 export const httpService = {
     get(endpoint, data) {
         console.log(endpoint)
