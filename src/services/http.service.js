@@ -2,10 +2,9 @@ import Axios from 'axios'
 // import { router } from '@/router'
 
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/api/'
-    : 'https://spotifly-server.onrender.com/'
+    ? 'https://spotifly-server.onrender.com/'
+    : '//localhost:3001/api/'
 
-    // //localhost:3001/api/ --for production
 
 
 const axios = Axios.create({
