@@ -12,10 +12,17 @@ import {Discover} from "./pages/Discover";
 import {Search} from "./pages/Search";
 import {SongDetails} from "./pages/SongDetails";
 import {TopCharts} from "./pages/TopCharts";
+import { MyPlaylists } from './pages/MyPlaylists';
+import { useState } from 'react';
+import { MyPlaylistsModal } from "./pages/MyPlaylistsModal";
 
 const App = () => {
 
   const { activeSong, currentSongs } = useSelector(state => state.songModule);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedSong, setSelectedSong] = useState()
+  const myPlaylists = useSelector(state => state.playlistModule)
+  console.log(myPlaylists);
 
   return (
     <div className="relative flex">
@@ -23,16 +30,17 @@ const App = () => {
       <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#a9cfe3]">
         <Searchbar />
 
-        <div className="px-6 h-[calc(100vh-66px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
+        <div className="px-6 h-[calc(100vh-64px)] mt-16 overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
           <div className="flex-1 h-fit pb-40">
             <Routes>
-              <Route path="/" element={<Discover />} />
+              <Route path="/"  element={<Discover setShowModal={setShowModal} setSelectedSong={setSelectedSong} />} />
               <Route path="/top-artists" element={<TopArtists />} />
               <Route path="/top-charts" element={<TopCharts />} />
               <Route path="/around-you" element={<AroundYou />} />
               <Route path="/artists/:id/:name" element={<ArtistDetails />} />
               <Route path="/songs/:songid" element={<SongDetails />} />
               <Route path="/search/:searchTerm" element={<Search />} />
+              <Route path="/my-playlists" element={<MyPlaylists />} />
             </Routes>
           </div>
           <div className="top-charts-root xl:sticky relative top-0 h-fit">
@@ -46,6 +54,7 @@ const App = () => {
           <MusicPlayer />
         </div>
       )}
+      {showModal ? <MyPlaylistsModal setShowModal={setShowModal} selectedSong={selectedSong}></MyPlaylistsModal> : null}
     </div>
   );
 };

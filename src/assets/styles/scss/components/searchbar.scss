@@ -1,9 +1,8 @@
 .searchbar-sec {
   height: 7vh;
   width: 100%;
-  position: fixed;
-  z-index: 2;
-  background: #37374a;
+  position: absolute;
+  z-index: 4;
   min-width: 180px;
 
   .search {

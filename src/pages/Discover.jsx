@@ -11,7 +11,7 @@ import {HiOutlineMenu} from 'react-icons/hi'
 
 
 
-export const Discover = () => {
+export const Discover = ({setShowModal, setSelectedSong}) => {
 
   const dispacth = useDispatch();
   const { activeSong, isPlaying, currentSongs} = useSelector((state) => state.songModule);
@@ -44,7 +44,7 @@ export const Discover = () => {
       <section className="songs-sec">
         {currentSongs.map((song, i) => {
           if(song.images && song.hub.actions){
-            return <SongCard key={song.key} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} data={currentSongs}></SongCard>;
+            return <SongCard setSelectedSong={setSelectedSong} setShowModal={setShowModal} key={song.key} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} data={currentSongs}></SongCard>;
           }else return null
         })}
       </section>

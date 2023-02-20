@@ -63,5 +63,21 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    .plus-btn{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border-radius: 5px;
+      width: 20px;
+      height: 20px;
+      
+
+      transition: background-color 0.3s;
+
+      &:hover{
+        background-color: darken($color: #5D6D7E, $amount: 5);
+      }
+    }
 }
 }
