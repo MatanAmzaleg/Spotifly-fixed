@@ -19,7 +19,7 @@ export const TopCharts = ({ setShowModal, setSelectedSong }) => {
   }, []);
 
   return (
-    <section className="top-charts-sec flex align-center column">
+    <section className="top-charts-sec flex align-center column relative">
       <h1 className="main-title">Top Charts:</h1>
       {loading ? (
         <img className="loader" src={loaderGif} alt="Loading..." />

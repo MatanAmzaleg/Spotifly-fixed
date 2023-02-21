@@ -41,7 +41,7 @@ export const Discover = ({setShowModal, setSelectedSong}) => {
         })}
       </select>
 
-      <section className="songs-sec">
+      <section className="songs-sec relative">
         {loading ? ( 
           <img className="loader"  src={loaderGif} alt="" />
         ) : (

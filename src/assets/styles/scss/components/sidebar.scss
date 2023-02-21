@@ -6,7 +6,8 @@
   transition: width 0.5s;
 
   &.open{
-width: 190px;
+    width: 173px;
+
 
 .sidebar-sec-mobile {
 
@@ -83,7 +84,7 @@ width: 190px;
 
 
   .sidebar-sec-mobile {
-    width: 240px;
+    width: 175px;
     position: relative;
     backdrop-filter: blur(10px);
     transform: translate(-100%);

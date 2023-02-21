@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {RiCloseLine} from 'react-icons/ri';
 import {HiOutlineMenu} from 'react-icons/hi'
@@ -8,6 +8,10 @@ import { links } from '../assets/constants'
 
 export const Sidebar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(()=> {
+    setMobileMenuOpen(false)
+  },[])
 
 const handleToggleMenu = () =>{
   setMobileMenuOpen(!mobileMenuOpen);

@@ -20,7 +20,7 @@ export const Search = () => {
   }, [searchTerm, dispatch]);
 
   return (
-    <section className="search-sec flex align-center column">
+    <section className="search-sec flex align-center column relative">
       <h1 className="main-title">
         Results for <span>{searchTerm}</span>:
       </h1>

@@ -22,7 +22,7 @@ export const TopArtists = () => {
   return (
     <section className="top-charts-sec flex align-center column">
       <h1 className="main-title">Top Artists:</h1>
-      <div className="songs-sec">
+      <div className="songs-sec relative">
         {loading ? (
           <img className="loader"  src={loaderGif} alt="" />
         ) : (
