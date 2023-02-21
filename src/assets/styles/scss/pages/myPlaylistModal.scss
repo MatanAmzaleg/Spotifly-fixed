@@ -5,26 +5,33 @@
   position: fixed;
   inset: 0;
 
+
   .playlist-modal {
     height: 70%;
     width: 55%;
+    min-width: 300px;
     background-color: #2f2f2f;
     border-radius: 20px;
     position: relative;
+    overflow-y:auto;
+
     .title {
       padding-inline: 20px;
       margin-top: 20px;
       align-items: center;
       .main-title {
-        font-size: 1.7rem;
+        font-size: 1.2rem;
         color: white;
         font-weight: bold;
       }
       .x-btn {
+        position: relative;
+        bottom: 20px;
+        left: 10px;
         width: 30px;
         height: 30px;
         .x-icon {
-          font-size: 30px;
+          font-size: 20px;
           color: white;
         }
       }
@@ -41,32 +48,39 @@
             margin: auto;
             margin-top: 3vh;
             gap: 30px;
+            margin-bottom: 60px;
             
     }
+    .mini-title{
+      bottom: 20px;
+      right: 20px;
+      width: fit-content;
+      cursor: pointer;
+      margin-top: 30px;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 5px;
+      padding-inline: 13px;
+      border-radius: 8px;
+      color: white;
+      transition: background-color 0.4s;
+      margin-bottom: 20px;
+      margin-inline-start: 10px;
+  
+      &:hover{
+          background-color: rgba(255, 255, 255, 0.176);
+      }
+  
+      .plus-icon{
+          margin-inline-start: 5px;
+          position: relative;
+          top: 1px;
+      }
   }
-  .mini-title{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: fit-content;
-    cursor: pointer;
-    margin-top: 30px;
-    font-size: 1.4rem;
-    background-color: rgba(255, 255, 255, 0.08);
-    padding: 5px;
-    padding-inline: 13px;
-    border-radius: 8px;
-    color: white;
-    transition: background-color 0.4s;
-
-    &:hover{
-        background-color: rgba(255, 255, 255, 0.176);
-    }
-
-    .plus-icon{
-        margin-inline-start: 5px;
-        position: relative;
-        top: 1px;
-    }
+  }
 }
+
+
+@media (min-width: 700px){
+
 }

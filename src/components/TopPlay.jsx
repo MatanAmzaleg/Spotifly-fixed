@@ -19,7 +19,7 @@ export const TopPlay = () => {
 
   useEffect(() => {
     divRef.current.scrollIntoView({ brhavior: "smooth" });
-  },[]);
+  }, []);
 
   const topPlays = currentSongs?.slice(0, 5);
 
@@ -28,7 +28,7 @@ export const TopPlay = () => {
   };
 
   const handlePlayClick = ({ song, i }) => {
-    const data = currentSongs
+    const data = currentSongs;
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
@@ -65,10 +65,13 @@ export const TopPlay = () => {
           centeredSlidesBounds
           modules={[FreeMode]}
           className=""
+          style={{ zIndex: 0 }}
         >
           {topPlays?.map((song, i) => (
             <SwiperSlide key={song?.key} className="swiper-slide">
-              <Link to={`/artists/${song?.artists[0]?.adamid}/${song?.subtitle}`}>
+              <Link
+                to={`/artists/${song?.artists[0]?.adamid}/${song?.subtitle}`}
+              >
                 <img src={song?.images.background} alt="name" />
               </Link>
             </SwiperSlide>
@@ -91,7 +94,10 @@ const TopChartCard = ({
     <h3 className="number">{i + 1}.</h3>
     <div className="song-details flex align-center">
       <img className="song-img" src={song?.images?.coverart} alt="" />
-      <div className="flex column">
+      <div
+        className="flex column"
+        style={{width: "60%"}}
+      >
         <Link to={`/songs/${song.key}`}>
           <h1 className="song-title">{song?.title}</h1>
         </Link>
@@ -103,13 +109,13 @@ const TopChartCard = ({
         </Link>
       </div>
     </div>
-      <PlayPause
-        className="play-pause"
-        isPlaying={isPlaying}
-        activeSong={activeSong}
-        song={song}
-        handlePause={handlePauseClick}
-        handlePlay={handlePlayClick}
-      ></PlayPause>
+    <PlayPause
+      className="play-pause"
+      isPlaying={isPlaying}
+      activeSong={activeSong}
+      song={song}
+      handlePause={handlePauseClick}
+      handlePlay={handlePlayClick}
+    ></PlayPause>
   </section>
 );

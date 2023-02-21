@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { loadSongs } from "../redux/actions/songs.actions";
 import {RiCloseLine, RiH1} from 'react-icons/ri';
 import {HiOutlineMenu} from 'react-icons/hi'
+import loaderGif from "../assets/loader.gif";
 
 export const Discover = ({setShowModal, setSelectedSong}) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export const Discover = ({setShowModal, setSelectedSong}) => {
 
       <section className="songs-sec">
         {loading ? ( 
-          <h1 color="red">Loading...</h1>
+          <img className="loader"  src={loaderGif} alt="" />
         ) : (
           currentSongs.map((song, i) => {
             if(song.images && song.hub.actions){
