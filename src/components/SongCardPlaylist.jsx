@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { PlayPause } from "./PlayPause";
 import { setActiveSong, playPause } from "../redux/actions/songs.actions";
-import { HiPlus } from "react-icons/hi";
+import { HiTrash } from "react-icons/hi";
 import { MyPlaylistsModal } from "../pages/MyPlaylistsModal";
 import { useEffect, useState } from "react";
 
-export const SongCard = ({ song, isPlaying, activeSong, i, data, setShowModal, setSelectedSong }) => {
+export const SongCardPlaylist = ({ song, isPlaying, activeSong, i, data, handleDeleteSong }) => {
   
   
   const dispatch = useDispatch();
@@ -22,17 +22,6 @@ export const SongCard = ({ song, isPlaying, activeSong, i, data, setShowModal, s
     dispatch(playPause(true));
   };
 
-  const handleOpenModal  = (song) => {
-    setSelectedSong(song)
-    setShowModal(true)
-  };
-
-
-
-  const handleCreatePlaylist = (playlistName) => {
-    console.log("Creating playlist:", playlistName);
-    // dispatch action to create a new playlist and add the song to it
-  };
 
   return (
     <section className="song-card-sec flex column">
@@ -43,6 +32,7 @@ export const SongCard = ({ song, isPlaying, activeSong, i, data, setShowModal, s
           song={song}
           handlePause={handlePauseClick}
           handlePlay={handlePlayClick}
+          
         />
         <img src={song.images?.coverart || song.images?.background} alt="" />
       </div>
@@ -61,13 +51,7 @@ export const SongCard = ({ song, isPlaying, activeSong, i, data, setShowModal, s
             {song.subtitle}
           </Link>
         </p>
-        <button
-        title="Add song to playlist"
-          className="plus-btn grid-center"
-          onClick={() => {handleOpenModal(song)}}
-        >
-          <HiPlus></HiPlus>
-        </button>
+        <button className="delete-btn grid-center" onClick={() => handleDeleteSong(song._id)} title="remove from playlist"><HiTrash></HiTrash></button>
       </div>
     </section>
   );

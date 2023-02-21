@@ -1,4 +1,5 @@
 .my-playlists-sec{
+    margin-top: 30px;
         .main-title{
             font-weight: bolder;
             font-size: 2.5rem;
@@ -20,13 +21,35 @@
             }
         }
     
-        .songs-sec{
+        .playlists-sec{
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             width: 80%;
             margin-top: 3vh;
             gap: 30px;
+        }
+
+        .mini-title{
+            cursor: pointer;
+            margin-top: 30px;
+            font-size: 1.4rem;
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 5px;
+            padding-inline: 13px;
+            border-radius: 8px;
+            color: white;
+            transition: background-color 0.4s;
+
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.176);
+            }
+
+            .plus-icon{
+                margin-inline-start: 5px;
+                position: relative;
+                top: 1px;
+            }
         }
     
 }

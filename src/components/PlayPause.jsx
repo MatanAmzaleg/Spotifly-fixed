@@ -8,7 +8,7 @@ export const PlayPause = ({
   handlePlay,
 }) =>
   isPlaying && activeSong?.title === song.title ? (
-    <FaPauseCircle className="pause" onClick={handlePause}></FaPauseCircle>
+    <FaPauseCircle className="pause" onClick={handlePause} title=" Pause song"></FaPauseCircle>
   ) : (
-    <FaPlayCircle className="play" onClick={handlePlay}></FaPlayCircle>
+    <FaPlayCircle className="play" onClick={handlePlay} title="Play song"></FaPlayCircle>
   );

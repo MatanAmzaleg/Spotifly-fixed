@@ -1,15 +1,16 @@
-import { HiX } from "react-icons/hi";
+import { HiPlus, HiX } from "react-icons/hi";
 import { useSelector } from "react-redux";
-import { PlaylistCard } from "../components/PlaylistCard";
+import { PlaylistCardAdd } from "../components/PlaylistCardAdd";
 import { useDispatch } from "react-redux";
-import { addSongToPlaylist } from "../redux/actions/playlist.actions";
+import { addSongToPlaylist, createPlaylist } from "../redux/actions/playlist.actions";
+
 
 export const MyPlaylistsModal = ({
   setShowModal,
   selectedSong
 }) => {
 
-    const dispacth = useDispatch()
+    const dispatch = useDispatch()
     console.log(selectedSong);
   const handleClose = () => {
     setShowModal(false); // call setShowModal with false
@@ -17,7 +18,14 @@ export const MyPlaylistsModal = ({
 
   const onAddSongToPlaylist = (playlistId) => {
     console.log(playlistId, selectedSong);
-    dispacth(addSongToPlaylist(playlistId, selectedSong))
+    dispatch(addSongToPlaylist(playlistId, selectedSong))
+    setShowModal(false)
+  }
+
+  const handleCreatePlaylist = () => {
+    const playlistName = prompt('Enter a playlist name')
+    dispatch(createPlaylist(playlistName))
+    console.log(playlistName);
   }
 
   const playlists = useSelector((state) => state.playlistModule.myPlaylists);
@@ -35,10 +43,11 @@ export const MyPlaylistsModal = ({
         <section className="playlists-sec">
           {playlists.map((playlist) => {
             console.log(playlist);
-              return <PlaylistCard key={playlist.id} playlist={playlist} onAddSongToPlaylist={onAddSongToPlaylist}></PlaylistCard>
+              return <PlaylistCardAdd key={playlist.id} playlist={playlist} onAddSongToPlaylist={onAddSongToPlaylist}></PlaylistCardAdd>
             }
           )}
         </section>
+        <h1 className="mini-title flex align-center" onClick={handleCreatePlaylist}>Create new playlist <HiPlus className="plus-icon"></HiPlus></h1>
       </div>
     </section>
   );

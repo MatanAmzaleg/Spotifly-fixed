@@ -1,0 +1,17 @@
+.playlist-details-sec{
+    .main-title{
+        font-weight: bolder;
+        font-size: 2.5rem;
+        margin-bottom: 2vh;
+        color: white;
+    }
+
+    .songs-sec{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 80%;
+        margin-top: 3vh;
+        gap: 30px;
+    }
+}

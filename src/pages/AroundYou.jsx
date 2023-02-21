@@ -3,13 +3,15 @@ import { loadSongs } from "../redux/actions/songs.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { SongCard } from "../components/SongCard";
 
-export const AroundYou = () => {
-  const { activeSong, isPlaying, currentSongs } = useSelector((state) => state.songModule);
+export const AroundYou = ({ setShowModal, setSelectedSong }) => {
+  const { activeSong, isPlaying, currentSongs } = useSelector(
+    (state) => state.songModule
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadSongs("AROUND_YOU"));
-  }, [])
+  }, []);
 
   return (
     <section className="around-you-sec flex align-center column">
@@ -19,6 +21,8 @@ export const AroundYou = () => {
           if (song.images && song.hub.actions) {
             return (
               <SongCard
+                setShowModal={setShowModal}
+                setSelectedSong={setSelectedSong}
                 key={song.key}
                 song={song}
                 i={i}

@@ -22,7 +22,6 @@ export const TopPlay = () => {
   },[]);
 
   const topPlays = currentSongs?.slice(0, 5);
-  console.log(topPlays);
 
   const handlePauseClick = () => {
     dispatch(playPause(false));
@@ -34,7 +33,6 @@ export const TopPlay = () => {
     dispatch(playPause(true));
   };
 
-  console.log(topPlays);
   return (
     <section className="top-play-sec flex column" ref={divRef}>
       <div className="top-charts">

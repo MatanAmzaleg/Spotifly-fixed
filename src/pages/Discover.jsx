@@ -15,9 +15,7 @@ export const Discover = ({setShowModal, setSelectedSong}) => {
 
   const dispacth = useDispatch();
   const { activeSong, isPlaying, currentSongs} = useSelector((state) => state.songModule);
-
-  console.log(currentSongs);
-
+  
   useEffect(() => {
     dispacth(loadSongs());
   }, []);

@@ -15,6 +15,7 @@ import {TopCharts} from "./pages/TopCharts";
 import { MyPlaylists } from './pages/MyPlaylists';
 import { useState } from 'react';
 import { MyPlaylistsModal } from "./pages/MyPlaylistsModal";
+import { PlaylistDetails } from './pages/PlayListDetails';
 
 const App = () => {
 
@@ -34,13 +35,14 @@ const App = () => {
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/"  element={<Discover setShowModal={setShowModal} setSelectedSong={setSelectedSong} />} />
-              <Route path="/top-artists" element={<TopArtists />} />
-              <Route path="/top-charts" element={<TopCharts />} />
-              <Route path="/around-you" element={<AroundYou />} />
+              <Route path="/top-artists" element={<TopArtists  />} />
+              <Route path="/top-charts" element={<TopCharts setShowModal={setShowModal} setSelectedSong={setSelectedSong} />} />
+              <Route path="/around-you" element={<AroundYou setShowModal={setShowModal} setSelectedSong={setSelectedSong}/>} />
               <Route path="/artists/:id/:name" element={<ArtistDetails />} />
               <Route path="/songs/:songid" element={<SongDetails />} />
               <Route path="/search/:searchTerm" element={<Search />} />
               <Route path="/my-playlists" element={<MyPlaylists />} />
+              <Route path="/my-playlists/:id" element={<PlaylistDetails />} />
             </Routes>
           </div>
           <div className="top-charts-root xl:sticky relative top-0 h-fit">
