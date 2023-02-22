@@ -4,6 +4,7 @@
   background-color: rgba(255, 255, 255, 0.259);
   position: fixed;
   inset: 0;
+  z-index: 10;
 
 
   .playlist-modal {
@@ -26,7 +27,7 @@
       }
       .x-btn {
         position: relative;
-        bottom: 20px;
+        bottom: 10px;
         left: 10px;
         width: 30px;
         height: 30px;
@@ -46,7 +47,7 @@
             flex-wrap: wrap;
             width: 80%;
             margin: auto;
-            margin-top: 3vh;
+            margin-top: 7vh;
             gap: 30px;
             margin-bottom: 60px;
             
@@ -81,6 +82,47 @@
 }
 
 
-@media (min-width: 700px){
+@media (min-width: 900px){
+  .my-playlists-modal-sec {
+  
+    .playlist-modal {
+  
+      .title {
 
+        .main-title {
+          font-size: 1.6rem;
+         }
+         .x-btn {
+          position: relative;
+          top:0;
+          left: 0;
+          .x-icon {
+            font-size: 25px;
+          }
+        }
+      }
+      .mini-title{
+      position: absolute;
+        font-size: 1.4rem;
+        background-color: rgba(255, 255, 255, 0.08);
+        padding: 5px;
+        padding-inline: 13px;
+        border-radius: 8px;
+        color: white;
+        transition: background-color 0.4s;
+        margin-bottom: 20px;
+        margin-inline-start: 10px;
+    
+        &:hover{
+            background-color: rgba(255, 255, 255, 0.176);
+        }
+    
+        .plus-icon{
+            margin-inline-start: 5px;
+            position: relative;
+            top: 1px;
+        }
+    }
+    }
+  }
 }

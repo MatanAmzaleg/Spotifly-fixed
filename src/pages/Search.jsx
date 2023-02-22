@@ -5,7 +5,7 @@ import { SongCard } from "../components/SongCard";
 import { useParams } from "react-router-dom";
 import loaderGif from "../assets/loader.gif";
 
-export const Search = () => {
+export const Search = ({ setShowModal, setSelectedSong }) => {
   const { activeSong, isPlaying, currentSongs } = useSelector(
     (state) => state.songModule
   );
@@ -34,6 +34,8 @@ export const Search = () => {
             if (song.images && song.hub.actions) {
               return (
                 <SongCard
+                  setShowModal={setShowModal}
+                  setSelectedSong={setSelectedSong}
                   key={song.key}
                   song={song}
                   i={i}

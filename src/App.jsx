@@ -39,8 +39,8 @@ const App = () => {
               <Route path="/top-charts" element={<TopCharts setShowModal={setShowModal} setSelectedSong={setSelectedSong} />} />
               <Route path="/around-you" element={<AroundYou setShowModal={setShowModal} setSelectedSong={setSelectedSong}/>} />
               <Route path="/artists/:id/:name" element={<ArtistDetails />} />
-              <Route path="/songs/:songid" element={<SongDetails />} />
-              <Route path="/search/:searchTerm" element={<Search />} />
+              <Route path="/songs/:songid" element={<SongDetails/>} />
+              <Route path="/search/:searchTerm" element={<Search setShowModal={setShowModal} setSelectedSong={setSelectedSong} />} />
               <Route path="/my-playlists" element={<MyPlaylists />} />
               <Route path="/my-playlists/:id" element={<PlaylistDetails />} />
             </Routes>
