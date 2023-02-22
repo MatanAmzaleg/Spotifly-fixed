@@ -3,8 +3,8 @@ import Axios from 'axios'
 //https://spotifly-server.onrender.com/api/
 
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '//localhost:3001/api/'
-    : '//localhost:3001/api/'
+    ? 'https://spotifly-server.onrender.com/api/'
+    : 'https://spotifly-server.onrender.com/api/'
 
 
 
